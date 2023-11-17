@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet-Keycloak", "DotNet-Keycloak\DotNet-Keycloak.csproj", "{8D4FF03C-C451-46EF-A38E-E2060FAB13F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet-Keycloak.api", "DotNet-Keycloak\DotNet-Keycloak.api.csproj", "{8D4FF03C-C451-46EF-A38E-E2060FAB13F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet-Keycloak.data", "DotNet-Keycloak.Data\DotNet-Keycloak.data.csproj", "{2E0B1E6A-7F38-42E1-AD83-9F1ABF63F829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet-Keycloak.business", "DotNet-Keycloak.business\DotNet-Keycloak.business.csproj", "{4EE2C6AD-4E28-46AE-AC6F-265E7D4E9640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{8D4FF03C-C451-46EF-A38E-E2060FAB13F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D4FF03C-C451-46EF-A38E-E2060FAB13F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D4FF03C-C451-46EF-A38E-E2060FAB13F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E0B1E6A-7F38-42E1-AD83-9F1ABF63F829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E0B1E6A-7F38-42E1-AD83-9F1ABF63F829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E0B1E6A-7F38-42E1-AD83-9F1ABF63F829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0B1E6A-7F38-42E1-AD83-9F1ABF63F829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE2C6AD-4E28-46AE-AC6F-265E7D4E9640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE2C6AD-4E28-46AE-AC6F-265E7D4E9640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE2C6AD-4E28-46AE-AC6F-265E7D4E9640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE2C6AD-4E28-46AE-AC6F-265E7D4E9640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
