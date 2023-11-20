@@ -21,7 +21,7 @@ builder.Services.AddAuthentication(options =>
     .AddCookie(cookie =>
     {
         cookie.Cookie.Name = "keycloak.cookie";
-        cookie.Cookie.MaxAge = TimeSpan.FromMinutes(60);
+        cookie.Cookie.MaxAge = TimeSpan.FromMinutes(30);
         cookie.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
         cookie.SlidingExpiration = true;
     })
