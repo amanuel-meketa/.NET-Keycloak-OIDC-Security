@@ -20,7 +20,6 @@ namespace DotNet_Keycloak.presentation.Controllers
             _userService = userService;
         }
 
-
         public async Task<IActionResult> Index()
         {
             ClaimsPrincipal currentUser = this.User;
@@ -37,9 +36,49 @@ namespace DotNet_Keycloak.presentation.Controllers
             userClaims.Add(new UserClaimsModel { Type = "id_token", Value = idToken });
             userClaims.Add(new UserClaimsModel { Type = "refresh_token", Value = refreshToken });
 
-          
-                return View(userClaims);
+            return View(userClaims);
         }
+
+        //public async Task<IActionResult> UserRole()
+        //{
+        //    // Retrieve the access token from HttpContext
+        //    var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+        //    // Decode the access token
+        //    var handler = new JwtSecurityTokenHandler();
+        //    var jsonToken = handler.ReadJwtToken(accessToken);
+
+        //    // Extract 'resource_access' claim
+        //    var resourceAccessClaim = jsonToken.Claims.FirstOrDefault(c => c.Type == "resource_access")?.Value;
+
+        //    // Prepare a list to hold user claims
+        //    var claimsModel = new List<UserClaimsModel>();
+
+        //    // Parse 'resource_access' JSON if available
+        //    if (!string.IsNullOrEmpty(resourceAccessClaim))
+        //    {
+        //        var resourceAccess = JObject.Parse(resourceAccessClaim);
+
+        //        // Example: Extract roles for a specific client (e.g., TestClient)
+        //        var testClientRoles = resourceAccess["TestClient"]?["roles"]?.ToObject<string[]>();
+        //        if (testClientRoles != null)
+        //        {
+        //            foreach (var role in testClientRoles)
+        //            {
+        //                claimsModel.Add(new UserClaimsModel { Type = "user_Role", Value = role });
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Handle case where 'resource_access' claim is missing or empty
+        //        // Example: Add default roles or log an error
+        //        claimsModel.Add(new UserClaimsModel { Type = "user_Role", Value = "DefaultRole" });
+        //    }
+
+        //    // Return the view with the list of claims
+        //    return View(claimsModel);
+        //}
 
         public IActionResult Logout()
         {
@@ -48,12 +87,13 @@ namespace DotNet_Keycloak.presentation.Controllers
              HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
 
             // Redirect to Keycloak end session endpoint
-            var keycloakEndSessionUrl = "http://localhost:8080/auth/realms/TestRealm/protocol/openid-connect/logout";
+            var keycloakEndSessionUrl = "http://host.docker.internal:9080/realms/TestRealm/protocol/openid-connect/logout";
 
             keycloakEndSessionUrl += "?redirect_uri=" + Url.Action("Index", "Home", null, Request.Scheme);
 
             return Redirect(keycloakEndSessionUrl);
         }
+
 
     }
 }

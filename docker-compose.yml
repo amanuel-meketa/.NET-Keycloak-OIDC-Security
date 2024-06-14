@@ -1,0 +1,30 @@
+version: "3.2"
+
+services:
+    mssql:
+        image: mcr.microsoft.com/mssql/server
+        ports:
+            - "1433:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=Password!23
+            - MSSQL_PID=Developer
+
+    mssqlscripts:
+        image: mcr.microsoft.com/mssql/server
+        depends_on:
+            - mssql
+        command: /bin/bash -c 'until /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P "Password!23" -Q "create database Keycloak"; do sleep 5; done'
+
+    keycloak:
+        image: quay.io/keycloak/keycloak
+        ports:
+          - "9080:9080"
+        environment:
+          KEYCLOAK_ADMIN: admin
+          KEYCLOAK_ADMIN_PASSWORD: admin
+        command: 
+          - start-dev 
+          - --db=dev-mem
+          - --hostname=host.docker.internal
+          - --http-port=9080
